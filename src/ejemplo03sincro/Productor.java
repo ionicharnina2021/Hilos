@@ -12,7 +12,7 @@ public class Productor extends Thread {
 			contenedor.put(i);
 			System.out.println("Productor. put: " + i);
 			try {
-				sleep((int) (Math.random() * 100));
+				sleep((int) (10));
 			} catch (InterruptedException e) {
 			}
 		}
