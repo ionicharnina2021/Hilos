@@ -1,0 +1,10 @@
+package prioridades07;
+
+public class Utiles {
+public static void wasteTime(int times) {
+	String cString="";
+	for (int i = 0; i < times; i++) {
+		cString+="C";
+	}
+}
+}

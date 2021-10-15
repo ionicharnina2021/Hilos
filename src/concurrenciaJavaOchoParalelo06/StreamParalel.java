@@ -1,4 +1,4 @@
-package concurrenciaJavaOchoParalelo;
+package concurrenciaJavaOchoParalelo06;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import concurrenciaSingleThread05.Element;
 import concurrenciaSingleThread05.TransformerSingle;
 
-
-public class StremaSerie {
-
+public class StreamParalel {
 	public static void main(String[] args) {
 		ArrayList<Element> elements = new ArrayList<>();
 		int size = 100;
@@ -18,11 +16,10 @@ public class StremaSerie {
 			elements.add(new Element());
 		}
 		Instant now = Instant.now();
-		elements.stream().forEach((element)->{single.change(element);});
+		elements.parallelStream().forEach((element)->{single.change(element);});
 		Instant later = Instant.now();
 		Duration duration = Duration.between(now, later);
 		System.out.println("la diferencia monohilo " + duration.toMillis());
 
 	}
-
 }
