@@ -1,4 +1,4 @@
-package ejercicio01;
+package ejercicio01v2;
 
 public class Lago {
 
@@ -17,14 +17,6 @@ public class Lago {
 	}
 
 	public synchronized void incrementarVida() {
-		while(!isVacio()) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		vida++;
 		notifyAll();
 	}
@@ -42,7 +34,6 @@ public class Lago {
 		if (b) {
 			vida--;
 		}
-		notifyAll();
 		return b;
 	}
 

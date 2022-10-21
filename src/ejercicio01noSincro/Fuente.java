@@ -1,4 +1,4 @@
-package ejercicio01;
+package ejercicio01noSincro;
 
 public class Fuente extends Thread {
 

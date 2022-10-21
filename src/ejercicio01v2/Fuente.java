@@ -1,4 +1,4 @@
-package ejercicio01;
+package ejercicio01v2;
 
 public class Fuente extends Thread {
 

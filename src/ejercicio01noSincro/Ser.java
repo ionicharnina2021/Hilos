@@ -1,4 +1,4 @@
-package ejercicio01;
+package ejercicio01noSincro;
 
 public class Ser extends Thread {
 
@@ -38,6 +38,10 @@ public class Ser extends Thread {
 		while (tamano < vida) {
 			if (Lago.getInstance().beber()) {
 				tamano++;
+				System.out.println("creci uno");
+			}else {
+				
+				System.out.println("fui al lago y estaba seco");
 			}
 			System.out.println(nombre);
 		}
