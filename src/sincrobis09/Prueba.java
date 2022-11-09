@@ -6,7 +6,7 @@ public class Prueba {
 		Cuenta origen=new Cuenta(1, "pancho"),destino=new Cuenta(0,"Jaime");
 		new Thread() {
 			public void run() {
-				System.out.println("comienzo 1");
+				System.out.println("moeinzo 1");
 				try {
 					sleep(1000);
 				} catch (InterruptedException e) {
@@ -15,13 +15,12 @@ public class Prueba {
 				}
 				destino.deposito(1);
 				System.out.println("deposito 1");
-				System.out.println("acaba el primer hilo");
-				System.out.println("el saldo despues de terminar hilo 1 "+destino.getSaldo());
+				System.out.println("acabe");
 			}
 		}.start();
 		new Thread() {
 				public void run() {
-					System.out.println("comienzo 2");
+					System.out.println("moeinzo 2");
 					synchronized (destino) {
 						destino.deposito(10);
 						try {
@@ -32,8 +31,7 @@ public class Prueba {
 						}
 					}
 					System.out.println("deposito 10");
-					System.out.println("acaba el segundo hilo");
-					System.out.println("el saldo despues de terminar hilo 2 "+destino.getSaldo());
+//					System.out.println(destino.getSaldo());
 				};
 			}.start();
 		

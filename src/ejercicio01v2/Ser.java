@@ -41,7 +41,7 @@ public class Ser extends Thread {
 			}
 			System.out.println(nombre);
 		}
-		System.out.println("muriendo con tamaño " + tamano);
+		System.out.println("muriendo con tamaño "+nombre+" " + tamano);
 	}
 
 }

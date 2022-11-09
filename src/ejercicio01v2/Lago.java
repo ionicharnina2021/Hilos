@@ -11,6 +11,10 @@ public class Lago {
 	public int getVida() {
 		return vida;
 	}
+	
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
 
 	public static Lago getInstance() {
 		return instancia;
@@ -26,7 +30,6 @@ public class Lago {
 			try {
 				wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -38,9 +41,6 @@ public class Lago {
 	}
 
 	public boolean isVacio() {
-		if (vida == 0)
-			return true;
-		else
-			return false;
+		return vida==0;
 	}
 }
