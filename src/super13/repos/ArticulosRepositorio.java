@@ -4,12 +4,12 @@ import java.util.List;
 
 import super13.modelo.Articulo;
 
-public class ArticulosEnStrockRepositorio {
+public class ArticulosRepositorio {
 	private List<Articulo> lista;
 
-	public ArticulosEnStrockRepositorio() {
+	public ArticulosRepositorio() {
 		super();
-		lista=ArticuloEnStockOM.getAll();
+		lista=ArticulosOM.getAll();
 	}
 	
 }

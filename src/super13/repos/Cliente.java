@@ -1,10 +1,13 @@
 package super13.repos;
 
+import java.util.Map;
+
 import super13.modelo.Articulo;
 
 public class Cliente {
 	private final String creditCard;
 	private Cart carrito;
+	private Map<Articulo, Integer> listaCompra;
 	
 	public Cliente(String creditCard) {
 		super();
