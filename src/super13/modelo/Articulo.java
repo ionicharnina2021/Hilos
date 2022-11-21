@@ -9,10 +9,11 @@ public class Articulo {
 	private float precio;
 	private int stock = 0;
 
-	public Articulo(String barCode, String nombre, float precio) {
+	public Articulo(String barCode, String nombre, float precio,int stock) {
 		super();
 		this.barCode = barCode;
 		this.nombre = nombre;
+		this.stock=stock;
 		setPrecio(precio);
 	}
 
@@ -25,7 +26,7 @@ public class Articulo {
 		this.precio = precio;
 	}
 
-	private int getStock() {
+	public int getStock() {
 		return stock;
 	}
 
@@ -68,13 +69,18 @@ public class Articulo {
 	}
 
 	private void decrementaStock(int cantidad) {
-		// TODO Auto-generated method stub
+		stock-=cantidad;
 
 	}
 
 	private boolean comprobarStock(int cantidad) {
-		// TODO Auto-generated method stub
-		return false;
+		return stock>=cantidad;
+	}
+
+	public boolean comprar(Integer value) {
+		boolean comprobarStock = comprobarStock(value);
+		if (comprobarStock) decrementaStock(value);
+		return comprobarStock;
 	}
 
 }

@@ -1,4 +1,4 @@
-package super13.repos;
+package super13.modelo;
 
 import java.util.ArrayDeque;
 import java.util.Objects;

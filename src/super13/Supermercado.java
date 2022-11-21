@@ -1,8 +1,8 @@
 package super13;
 
-import super13.repos.ArticulosRepositorio;
+import super13.repos.ArticulosEnStockRepositorio;
 
 public class Supermercado {
-	private ArticulosRepositorio articulosEnStrockRepositorio;
+	private ArticulosEnStockRepositorio articulosEnStrockRepositorio;
 	
 }
