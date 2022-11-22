@@ -7,6 +7,7 @@ import super13.modelo.Articulo;
 
 public class ArticulosEnStockRepositorio {
 	private List<Articulo> lista;
+	AlmacenCentral almacenCentral = new AlmacenCentral(this);
 
 	public ArticulosEnStockRepositorio() {
 		super();
@@ -27,7 +28,14 @@ public class ArticulosEnStockRepositorio {
 	}
 
 	public boolean comprar(Articulo key, Integer value) {
-		return lista.get(lista.indexOf(key)).comprar(value);
+		boolean comprar = lista.get(lista.indexOf(key)).comprar(value);
+		almacenCentral.recorreLocal();
+		return comprar;
+	}
+
+	public List<Articulo> GetAllArticulos() {
+		return lista;
+
 	}
 
 }

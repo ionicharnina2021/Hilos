@@ -2,6 +2,7 @@ package super13.modelo;
 
 import java.util.Map.Entry;
 
+import super13.repos.AlmacenCentral;
 import super13.repos.ArticulosEnStockRepositorio;
 import super13.repos.ListaCompraOM;
 
@@ -10,6 +11,8 @@ public class Cliente implements Runnable {
 	private Cart carrito;
 	private Cart listaCompra;
 	private ArticulosEnStockRepositorio articulosEnStockRepositorio;
+	
+	
 
 	public Cliente(String creditCard, ArticulosEnStockRepositorio articulosEnStockRepositorio) {
 		super();
@@ -20,7 +23,7 @@ public class Cliente implements Runnable {
 	private void iniciarCompra() {
 		this.carrito = new Cart();
 		int elementosMaximo = 3;
-		int cantidadMaxima = 5;
+		int cantidadMaxima = 15;
 		this.listaCompra = new ListaCompraOM(this.articulosEnStockRepositorio).getListaCompraRandom(elementosMaximo,
 				cantidadMaxima);
 	}

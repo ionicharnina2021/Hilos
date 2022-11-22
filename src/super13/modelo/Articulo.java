@@ -83,4 +83,8 @@ public class Articulo {
 		return comprobarStock;
 	}
 
+	public void incrementarStock(int i) {
+		stock+=i;
+	}
+
 }

@@ -21,7 +21,9 @@ public class ListaCompraOM {
 		int cantidad = new Random().nextInt(cantidadMaxima) + 1;
 		for (int i = 0; i < elementos;) {
 			if (nuevo.agregar(articulosEnStockRepositorio.getArticuloRandom(),
-					new Random().nextInt(cantidadMaxima) + 1)) {
+//					new Random().nextInt(cantidadMaxima) + 1)) {
+					//TODO volver al estaod anterior
+				10)) {
 				i++;
 			}
 		}
