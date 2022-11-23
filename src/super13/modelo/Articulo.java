@@ -61,11 +61,7 @@ public class Articulo {
 	}
 
 	public boolean gestionarStock(int cantidadSolicitada) {
-		if (comprobarStock(cantidadSolicitada)) {
-			decrementaStock(cantidadSolicitada);
-			return true;
-		};
-		return false;
+		return comprobarStock(cantidadSolicitada);
 	}
 
 	private void decrementaStock(int cantidad) {

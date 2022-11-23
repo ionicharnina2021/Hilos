@@ -35,7 +35,6 @@ public class ArticulosEnStockRepositorio {
 
 	public List<Articulo> GetAllArticulos() {
 		return lista;
-
 	}
 
 }

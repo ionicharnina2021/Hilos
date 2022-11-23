@@ -10,6 +10,7 @@ public class Cliente implements Runnable {
 	private final String creditCard;
 	private Cart carrito;
 	private Cart listaCompra;
+	private boolean listaCompraAleatoria=true;
 	private ArticulosEnStockRepositorio articulosEnStockRepositorio;
 	
 	
@@ -23,8 +24,13 @@ public class Cliente implements Runnable {
 	private void iniciarCompra() {
 		this.carrito = new Cart();
 		int elementosMaximo = 3;
-		int cantidadMaxima = 15;
-		this.listaCompra = new ListaCompraOM(this.articulosEnStockRepositorio).getListaCompraRandom(elementosMaximo,
+		int cantidadMaxima = 10;
+		if(listaCompraAleatoria)
+		this.listaCompra = generarListaCompraAleatoria(elementosMaximo, cantidadMaxima);
+	}
+
+	public Cart generarListaCompraAleatoria(int elementosMaximo, int cantidadMaxima) {
+		return new ListaCompraOM(this.articulosEnStockRepositorio).getListaCompraRandom(elementosMaximo,
 				cantidadMaxima);
 	}
 
@@ -46,7 +52,7 @@ public class Cliente implements Runnable {
 		 * parametros, por lo tanto configurar el tipo de lista compra debe hacerse
 		 * aparte. Esto es algo raro pero no hay otro metodo
 		 */
-		iniciarCompra();
+		iniciarCompra();		
 		/*
 		 * 2o ahora hay que comprar. El cliente va a hacer una cosa, varias veces,
 		 * primero vamos a coger un elemento de la lista de la compra. preguntamos al
@@ -79,6 +85,23 @@ public class Cliente implements Runnable {
 
 	public Cart getCarrito() {
 		return carrito;
+	}
+
+	public Cart getListaCompra() {
+		return listaCompra;
+		
+	}
+
+	private boolean isListaCompraAleatoria() {
+		return listaCompraAleatoria;
+	}
+
+	public void setListaCompraAleatoria(boolean listaCompraAleatoria) {
+		this.listaCompraAleatoria = listaCompraAleatoria;
+	}
+
+	public void setListaCompra(Cart listaCompra) {
+		this.listaCompra = listaCompra;
 	}
 
 }

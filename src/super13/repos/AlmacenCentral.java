@@ -18,8 +18,8 @@ public class AlmacenCentral {
 		articulosEnStockRepositorio.GetAllArticulos()
 		.forEach((articulo)->{
 			if(articulo.getStock()==0) {
-				incremento(articulo);
-				System.out.println("h habido una falla en el stock");
+//				incremento(articulo);
+//				System.out.println("h habido una falla en el stock");
 			}
 		});;
 	}

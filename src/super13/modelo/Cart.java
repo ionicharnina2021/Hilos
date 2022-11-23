@@ -13,12 +13,20 @@ public class Cart {
 		cesta = new HashMap<>();
 	}
 
-	public boolean agregar(Articulo articulo, int cantidad) {
+	public boolean agregarCarrito(Articulo articulo, int cantidad) {
 		if (!cesta.containsKey(articulo))
 			if (articulo.gestionarStock(cantidad)) {
 				cesta.put(articulo, cantidad);
 				return true;
 			}
+		return false;
+	}
+
+	public boolean agregar(Articulo articulo, int cantidad) {
+		if (!cesta.containsKey(articulo)) {
+			cesta.put(articulo, cantidad);
+			return true;
+		}
 		return false;
 	}
 
