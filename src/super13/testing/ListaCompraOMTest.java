@@ -15,7 +15,7 @@ class ListaCompraOMTest {
 	ArticulosEnStockRepositorio articulosEnStockRepositorio;
 	@BeforeEach
 	void before() {
-		articulosEnStockRepositorio=new ArticulosEnStockRepositorio(10);
+		articulosEnStockRepositorio=new ArticulosEnStockRepositorio(10,false);
 		listaOM =new ListaCompraOM(articulosEnStockRepositorio);
 	}
 
@@ -23,7 +23,7 @@ class ListaCompraOMTest {
 	void testGetListaCompraRandom() {
 		Comentador.mensaje("comienza la prueba");
 		int elementosMaximo = 3;
-		int cantidadMaxima = 5;
+		int cantidadMaxima = 10;
 		Cart listaCompraRandom = listaOM.getListaCompraRandom(elementosMaximo, cantidadMaxima);
 		int size = listaCompraRandom.size();
 		assertTrue(size<=elementosMaximo);

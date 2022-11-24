@@ -3,6 +3,7 @@ package super13.repos;
 import java.util.List;
 import java.util.Random;
 
+import super13.modelo.AlmacenCentral;
 import super13.modelo.Articulo;
 
 public class ArticulosEnStockRepositorio {
@@ -14,10 +15,14 @@ public class ArticulosEnStockRepositorio {
 		lista = ArticulosOM.getAll();
 	}
 
-	public ArticulosEnStockRepositorio(int stockIndividualInicial) {
+	public ArticulosEnStockRepositorio(int stockIndividualInicial,boolean observing) {
 		super();
-		lista = ArticulosOM.getAll(stockIndividualInicial);
+		if(!observing)
+			lista = ArticulosOM.getAll(stockIndividualInicial);
+		else
+			lista=ArticulosOM.getAll(stockIndividualInicial,almacenCentral);
 	}
+
 
 	public int size() {
 		return lista.size();
@@ -29,7 +34,8 @@ public class ArticulosEnStockRepositorio {
 
 	public boolean comprar(Articulo key, Integer value) {
 		boolean comprar = lista.get(lista.indexOf(key)).comprar(value);
-		almacenCentral.recorreLocal();
+		//ya no hace falta este sondeo
+//		almacenCentral.recorreLocal();
 		return comprar;
 	}
 

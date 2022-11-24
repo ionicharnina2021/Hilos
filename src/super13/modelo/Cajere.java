@@ -51,10 +51,10 @@ public class Cajere implements Runnable {
 
 	@Override
 	public void run() {
-		while(trabaja) {
-			ArrayDeque cola=new ArrayDeque<>();
-			Cliente cliente=cola.poll();
-		}
+//		while(trabaja) {
+//			ArrayDeque cola=new ArrayDeque<>();
+//			Cliente cliente=cola.poll();
+//		}
 		
 	}
 

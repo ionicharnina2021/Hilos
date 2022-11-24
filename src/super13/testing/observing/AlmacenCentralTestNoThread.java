@@ -1,5 +1,6 @@
-package super13.testing;
+package super13.testing.observing;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +19,7 @@ import super13.modelo.CartAdapter;
 import super13.modelo.Cliente;
 import super13.repos.ArticulosEnStockRepositorio;
 
-class ClienteTestNoThread {
+class AlmacenCentralTestNoThread {
 
 	Cliente cliente;
 	ArticulosEnStockRepositorio articulosEnStockRepositorio;
@@ -27,12 +28,12 @@ class ClienteTestNoThread {
 
 	@BeforeEach
 	void before() {
-		articulosEnStockRepositorio = new ArticulosEnStockRepositorio(stockIndividualInicial,false);
+		articulosEnStockRepositorio = new ArticulosEnStockRepositorio(stockIndividualInicial,true);
 		almacenCentral = new AlmacenCentral(articulosEnStockRepositorio);
 		cliente = new Cliente("1234", articulosEnStockRepositorio);
 	}
 
-	@Test
+	@Ignore
 	void testRunStockAvailable() {
 		cliente.run();
 		Cart carrito = cliente.getCarrito();
@@ -52,11 +53,15 @@ class ClienteTestNoThread {
 		Iterator<Entry<Articulo, Integer>> iterator = convert.iterator();
 		Entry<Articulo, Integer> elemento = iterator.next();
 		iterator.remove();
-		elemento.setValue(15);
+		elemento.setValue(10);
 		assertTrue(generarListaCompraAleatoria.agregar(elemento.getKey(),elemento.getValue()));
 		cliente.setListaCompra(generarListaCompraAleatoria);
 		cliente.run();
-		assertEquals(elementos-1, cliente.getCarrito().size());
+		assertEquals(elementos, cliente.getCarrito().size());
+		assertFalse(articulosEnStockRepositorio.GetAllArticulos().stream()
+		.mapToInt((articulo)->{
+			return articulo.getStock();
+		}).anyMatch((stock)->{return stock==0;}));
 	}
 
 }

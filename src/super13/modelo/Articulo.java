@@ -1,13 +1,16 @@
 package super13.modelo;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Objects;
 
-public class Articulo {
+public class Articulo implements Reponible{
 	private String barCode;
 	private String nombre;
-
 	private float precio;
 	private int stock = 0;
+	private PropertyChangeSupport pcs;
+	private boolean observing=false;
 
 	public Articulo(String barCode, String nombre, float precio,int stock) {
 		super();
@@ -15,6 +18,12 @@ public class Articulo {
 		this.nombre = nombre;
 		this.stock=stock;
 		setPrecio(precio);
+	}
+	public Articulo(String barCode, String nombre, float precio,int stock,PropertyChangeListener almacenCentral) {
+		this(barCode, nombre, precio, stock);
+		pcs=new PropertyChangeSupport(this);
+		pcs.addPropertyChangeListener(almacenCentral);
+		this.observing=true;
 	}
 
 	private float getPrecio() {
@@ -66,6 +75,9 @@ public class Articulo {
 
 	private void decrementaStock(int cantidad) {
 		stock-=cantidad;
+		if(stock==0&&observing) {
+			pcs.firePropertyChange("Cero",null,this);
+		}
 
 	}
 
@@ -79,6 +91,7 @@ public class Articulo {
 		return comprobarStock;
 	}
 
+	@Override
 	public void incrementarStock(int i) {
 		stock+=i;
 	}

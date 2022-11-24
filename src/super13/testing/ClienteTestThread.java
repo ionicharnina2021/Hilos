@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import super13.modelo.AlmacenCentral;
 import super13.modelo.Articulo;
 import super13.modelo.Cart;
 import super13.modelo.Cliente;
-import super13.repos.AlmacenCentral;
 import super13.repos.ArticulosEnStockRepositorio;
 
 class ClienteTestThread {
@@ -30,7 +30,7 @@ class ClienteTestThread {
 
 	@BeforeEach
 	void before() {
-		articulosEnStockRepositorio = new ArticulosEnStockRepositorio(stockIndividualInicial);
+		articulosEnStockRepositorio = new ArticulosEnStockRepositorio(stockIndividualInicial,false);
 		almacenCentral = new AlmacenCentral(articulosEnStockRepositorio);
 		cliente = new Cliente("1234", articulosEnStockRepositorio);
 		executorService = Executors.newCachedThreadPool();

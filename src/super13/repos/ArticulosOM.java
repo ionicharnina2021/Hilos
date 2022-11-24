@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import super13.modelo.AlmacenCentral;
 import super13.modelo.Articulo;
 
 public class ArticulosOM {
@@ -26,5 +27,17 @@ public class ArticulosOM {
 		}
 		return articulos;
 	}
+	
+	public static List<Articulo> getAll(int stockIndividualInicial,AlmacenCentral almacenCentral) {
+		if (articulos == null) {
+			articulos = new ArrayList<>();
+			for (int i = 0; i < barcodes.length; i++) {
+				articulos.add(
+						new Articulo(barcodes[i], nombres[i], precios[i], stockIndividualInicial,almacenCentral));
+			}
+		}
+		return articulos;
+	}
+	
 
 }
