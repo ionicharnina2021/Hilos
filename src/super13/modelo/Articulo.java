@@ -95,5 +95,8 @@ public class Articulo implements Reponible{
 	public void incrementarStock(int i) {
 		stock+=i;
 	}
-
+	@Override
+	public String toString() {
+		return nombre;
+	}
 }

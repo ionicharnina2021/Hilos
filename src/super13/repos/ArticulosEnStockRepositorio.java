@@ -43,4 +43,10 @@ public class ArticulosEnStockRepositorio {
 		return lista;
 	}
 
+	public boolean isEmpty() {
+		return !lista.stream()
+				.mapToInt((articulo)->articulo.getStock())
+				.anyMatch((stock)->{return stock>0;});
+	}
+
 }
