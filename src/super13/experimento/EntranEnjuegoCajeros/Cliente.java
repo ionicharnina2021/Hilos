@@ -55,6 +55,7 @@ public class Cliente implements Runnable {
 		}
 		
 		pagarCompra();
+		System.out.println("pagar compra "+creditCard);
 	}
 
 	private void hacerCompra() {
@@ -68,7 +69,7 @@ public class Cliente implements Runnable {
 	}
 
 	private boolean pagarCompra() {
-		return false;
+		return colaPago.offer(this);
 	}
 
 	public Cart getCarrito() {

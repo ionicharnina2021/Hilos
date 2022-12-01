@@ -30,8 +30,8 @@ class CajeroTestThread {
 		articulosEnStockRepositorio = new ArticulosEnStockRepositorio(stockIndividualInicial, false);
 		almacenCentral = new AlmacenCentral(articulosEnStockRepositorio);
 		colaDeClientes = new ArrayDeque<>();
-		inicial=new ArrayList<>();
-		new ClientesOM().getClientes(10, colaDeClientes,inicial, articulosEnStockRepositorio);
+		inicial = new ArrayList<>();
+		new ClientesOM().getClientes(10, colaDeClientes, inicial, articulosEnStockRepositorio);
 		cajeros = new ArrayList<>();
 		new CajeresOM().getCajeres(3, cajeros, colaDeClientes);
 		executorService = Executors.newCachedThreadPool();
@@ -44,13 +44,19 @@ class CajeroTestThread {
 		for (Cliente cliente : inicial) {
 			executorService.execute(cliente);
 		}
-		//actividad normal del supermercado
+//		Thread.sleep(100);
+		// actividad normal del supermercado
 		do {
 			for (Cajere cajere : cajeros) {
-				Future<Cliente> submit = executorService.submit(cajere);
-				executorService.execute(submit.get());
+				if (!colaDeClientes.isEmpty()) {
+					Future<Cliente> submit = executorService.submit(cajere);
+					executorService.execute(submit.get());
+					contador++;
+				}
 			}
-		} while (contador++ < 100);
+			System.out.println("contador " + contador);
+		} while (contador < 100);
+
 	}
 
 }
